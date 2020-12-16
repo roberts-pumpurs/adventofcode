@@ -15,7 +15,6 @@ pub fn read_input() -> Vec<i32> {
 }
 
 pub fn perform_task(mut input: Vec<i32>) -> Option<i32> {
-    // let mut input =
     input.sort();
     for elem in input.iter() {
         for rev_elem in input.iter().rev() {
@@ -28,7 +27,7 @@ pub fn perform_task(mut input: Vec<i32>) -> Option<i32> {
 }
 
 fn main() {
-    let mut input = read_input();
+    let input = read_input();
     time_it! {
         (perform_task(input).unwrap(), "")
     };
