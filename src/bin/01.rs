@@ -3,7 +3,7 @@ use std::fs;
 
 use AdventOfCode::time_it;
 
-pub fn read_input() -> Vec<i32> {
+fn read_input() -> Vec<i32> {
     let filename = "src/bin/_01_input.txt";
     let contents = fs::read_to_string(filename).expect("Something went wrong reading the file");
     let contents: Vec<i32> = contents
@@ -14,7 +14,7 @@ pub fn read_input() -> Vec<i32> {
     contents
 }
 
-pub fn perform_task_one(mut input: Vec<i32>) -> Option<i32> {
+fn perform_task_one(mut input: Vec<i32>) -> Option<i32> {
     input.sort();
     for elem in input.iter() {
         for rev_elem in input.iter().rev() {
@@ -26,7 +26,7 @@ pub fn perform_task_one(mut input: Vec<i32>) -> Option<i32> {
     None
 }
 
-pub fn perform_task_two(mut input: Vec<i32>) -> Option<i32> {
+fn perform_task_two(mut input: Vec<i32>) -> Option<i32> {
     input.sort();
     for elem in input.iter() {
         for rev_elem in input.iter().rev() {
