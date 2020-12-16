@@ -3,7 +3,7 @@ use std::fs;
 
 use AdventOfCode::time_it;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct Password {
     low: u32,
     high: u32,
@@ -37,7 +37,7 @@ fn read_input() -> Vec<Password> {
     contents
 }
 
-fn validate_password(pw: Vec<Password>) -> u32 {
+fn validate_password(pw: &Vec<Password>) -> u32 {
     pw.iter().fold(0, |acc_non_corrupted, x| {
         let repetitions = x.pw.chars().fold(0, |acc_inner, c| {
             if c == x.letter {
@@ -47,7 +47,16 @@ fn validate_password(pw: Vec<Password>) -> u32 {
             }
         });
         if (x.low..x.high + 1).contains(&repetitions) {
-            println!("Repetiotions {} {:#?} {}", repetitions, x.low..x.high, (x.low..x.high + 1).contains(&repetitions));
+            return acc_non_corrupted + 1;
+        }
+        acc_non_corrupted
+    })
+}
+fn validate_password_part2(pw: &Vec<Password>) -> u32 {
+    pw.iter().fold(0, |acc_non_corrupted, x| {
+        let l = x.pw.chars().nth(x.low as usize - 1).unwrap() == x.letter;
+        let r = x.pw.chars().nth(x.high as usize - 1).unwrap() == x.letter;
+        if l ^ r {
             return acc_non_corrupted + 1;
         }
         acc_non_corrupted
@@ -56,7 +65,8 @@ fn validate_password(pw: Vec<Password>) -> u32 {
 
 fn main() {
     let input = read_input();
+    // let input_c = inp
     time_it! {
-        (validate_password(input), "")
+        (validate_password(&input), validate_password_part2(&input))
     };
 }
