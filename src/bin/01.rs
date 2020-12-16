@@ -1,7 +1,7 @@
 use std::env;
 use std::fs;
 
-use day_1::time_it;
+use AdventOfCode::time_it;
 
 pub fn read_input() -> Vec<i32> {
     let filename = "src/bin/_01_input.txt";

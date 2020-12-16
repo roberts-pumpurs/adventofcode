@@ -5,8 +5,8 @@ macro_rules! time_it {
       let now = std::time::Instant::now();
       let (p1,p2) = { $($body)+ };
       let time = now.elapsed().as_millis();
-      println!("Part one: {}", p1);
-      println!("Part two: {}", p2);
+      println!("Part one: {:#?}", p1);
+      println!("Part two: {:#?}", p2);
       println!("Time: {}ms", time);
   }
 }
