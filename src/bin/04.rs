@@ -55,7 +55,7 @@ fn read_input() -> Vec<Document> {
     contents
 }
 
-fn part_1(input: Vec<Document>) -> i32 {
+fn part_1(input: &Vec<Document>) -> i32 {
     let result = input.iter().fold(0, |current, item| {
         if item.byr.is_some()
             && item.iyr.is_some()
@@ -74,9 +74,79 @@ fn part_1(input: Vec<Document>) -> i32 {
     return result;
 }
 
+fn part_2(input: &Vec<Document>) -> i32 {
+    let validator = |el: &str, lower: i32, higher: i32| {
+        el.parse::<i32>()
+            .map_or(false, |nr_val| (lower..higher + 1).contains(&nr_val))
+            .into()
+    };
+    let result = input.iter().fold(0, |current, item| {
+        let valid_byr: bool = item
+            .byr
+            .as_ref()
+            .map_or(false, |el| validator(el, 1920, 2002));
+
+        let valid_iyr = item
+            .iyr
+            .as_ref()
+            .map_or(false, |el| validator(el, 2010, 2020));
+        let valid_eyr = item
+            .eyr
+            .as_ref()
+            .map_or(false, |el| validator(el, 2020, 2030));
+        let valid_hgt = item.hgt.as_ref().map_or(false, |el| {
+            if el.ends_with("in") {
+                let nr = el.split("in").next().map_or(false, |e| {
+                    e.parse::<i32>().map_or(false, |e| (59..76 + 1).contains(&e))
+                });
+                return nr;
+            } else if el.ends_with("cm") {
+                let nr = el.split("cm").next().map_or(false, |e| {
+                    e.parse::<i32>().map_or(false, |e| (150..193 + 1).contains(&e))
+                });
+                return nr;
+            }
+            return false;
+        });
+        let valid_hcl = item.hcl.as_ref().map_or(false, |e| {
+            e.starts_with("#") && e.chars().skip(1).all(|e| e.is_ascii_hexdigit())
+        });
+        let valid_ecl = item.ecl.as_ref().map_or(false, |e| match e.as_ref() {
+            "amb" => true,
+            "blu" => true,
+            "brn" => true,
+            "gry" => true,
+            "grn" => true,
+            "hzl" => true,
+            "oth" => true,
+            _ => false,
+        });
+        let valid_pid = item
+            .pid
+            .as_ref()
+            .map_or(false, |e| e.chars().all(|e| e.is_numeric()) && e.len() == 9);
+        let valid_cid = true;
+
+        if valid_byr
+            && valid_iyr
+            && valid_eyr
+            && valid_hgt
+            && valid_hcl
+            && valid_ecl
+            && valid_pid
+            && valid_cid
+        {
+            return current + 1;
+        } else {
+            return current;
+        }
+    });
+    return result;
+}
+
 fn main() {
     let input = read_input();
     time_it! {
-        (part_1(input), "")
+        (part_1(&input), part_2(&input))
     };
 }
