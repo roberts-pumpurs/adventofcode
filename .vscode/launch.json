@@ -1,0 +1,212 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'AdventOfCode'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "AdventOfCode",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'AdventOfCode'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=AdventOfCode",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "AdventOfCode",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'AdventOfCode'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=AdventOfCode",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "AdventOfCode",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '01'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=01",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "01",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '01'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=01",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "01",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '04'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=04",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "04",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '04'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=04",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "04",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '02'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=02",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "02",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '02'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=02",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "02",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '03'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=03",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "03",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '03'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=03",
+                    "--package=AdventOfCode"
+                ],
+                "filter": {
+                    "name": "03",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
