@@ -1,4 +1,9 @@
+// For somt reason this task was very hard for me. Probably wouldn't have done it in a nice manner without this
+// https://github.com/AxlLind/AdventOfCode2020/blob/master/src/bin/05.rs
+
 use core::ops::Range;
+use itertools::Itertools;
+use std::collections::HashSet;
 use std::fs;
 use std::{cmp, env};
 
@@ -44,10 +49,21 @@ fn part_1(input: &Vec<Seat>) -> i32 {
     res
 }
 
+fn part_2(input: &Vec<Seat>) -> i32 {
+    let res: HashSet<_> = input.iter().map(|s| get_position(&s.0)).collect();
+    let res_2 = (1..=127)
+        .cartesian_product(0..8)
+        .filter(|pos| !res.contains(pos))
+        .find(|&(r, c)| res.contains(&(r, c - 1)) && res.contains(&(r, c + 1)))
+        .map(|(r, c)| r * 8 + c)
+        .unwrap();
+    res_2
+}
+
 fn main() {
     let input = read_input();
     // println!("{:#?}", input);
     time_it! {
-        (part_1(&input), "")
+        (part_1(&input),part_2(&input))
     };
 }
